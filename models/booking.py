@@ -1,4 +1,4 @@
 class Booking:
-    def __init__(self,member,staff):
+    def __init__(self,member,classes):
         self.member = member
-        self.staff = staff 
+        self.classes = classes 

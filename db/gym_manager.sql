@@ -7,7 +7,7 @@ CREATE TABLE staff(
    id SERIAL NUMBER KEY 
    first_name VARCHAR(255),
    last_name VARCHAR(255),
-   postion VARCHAR(255),
+   job_postion VARCHAR(255),
    
 );
 
@@ -22,15 +22,14 @@ CREATE TABLE members(
     contact_info_email VARCHAR(255),
     contact_info_number VARCHAR(255),
     membership_type VARCHAR(255)
-
-);
+    );
 
 
 CREATE TABLE classes(
    id SERIAL NUMBER KEY, 
-   staff_id SERIAL REFERENCES staff(id),
-   name VARCHAR(255),
-   duration VARCHAR(255)
+   class_name VARCHAR(255),
+   duration VARCHAR(255),
+   staff_id SERIAL REFERENCES staff(id)
 
 
 
