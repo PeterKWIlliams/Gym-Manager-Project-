@@ -21,3 +21,21 @@ def select_all():
 def select(id):
     sql = "SELECT * FROM staff where id = %s"
     values = [id]
+    result = run_sql(sql,values)[0]
+    staff = Staff(result["name"],result["last_name"],result["job_title"],result["id"])
+    return staff 
+
+def delete_all():
+    sql = "DELETE FROM staff"
+    
+    run_sql(sql)
+
+
+def delete(id):
+    sql = "DELETE FROM staff WHERE id = %s"
+    values = [id]
+    run_sql(sql,values)
+
+def update(staff):
+    sql = "UPDATE staff SET (first_name,last_name,job_title) WHERE id = %s"
+    values = [staff.first_name, staff.last_name,staff.job_title,staff.id]
