@@ -8,7 +8,7 @@ import repositories.staff_repository as staff_repository
 
 
 def save(gym_class):
-    sql = "INSERT INTO gym_classes (gym_class_name,duration,staff_id) VALUES (%s, %s) RETURNING id"
+    sql = "INSERT INTO gym_classes (gym_class_name,duration,staff_id) VALUES (%s, %s,%s) RETURNING id"
     values = [gym_class.gym_class_name,gym_class.duration,gym_class.staff.id]
     results = run_sql(sql,values)
     id = results[0]['id']

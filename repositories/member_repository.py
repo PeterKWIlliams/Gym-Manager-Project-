@@ -2,11 +2,12 @@ from db.run_sql import run_sql
 from models.member import Member
 
 def save(member):
-    sql = "INSERT INTO members (first_name,last_name,date_of_birth,gender,notes,contact_info_email,contact_info_number,membership_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
-    values = [member.first_name,member.last_name,member.date_of_birth,member.gender,member.contact_info_email,member.contact_info_number,member.membership_type]
+    sql = "INSERT INTO members (first_name,last_name,date_of_birth,gender,notes,contact_info_email,contact_info_number,membership_type) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id"
+    values =[member.first_name,member.last_name,member.date_of_birth,member.gender,member.notes,member.contact_info_email,member.contact_info_number,member.membership_type]
     results = run_sql(sql,values)
-    id = results[0]['id']
+    id = results[0]["id"]
     member.id = id 
+
 
 def select_all():
     members = []
@@ -28,11 +29,12 @@ def delete_all():
 
 def delete(id):
     sql = "DELETE FROM members WHERE id = %s"
-    run_sql(sql)
+    values = [id]
+    run_sql(sql,values)
 
 def update(member):
     sql = "UPDATE members SET (first_name,last_name,date_of_birth,gender,notes,contact_info_email,contact_info_number,membership_type) = (%s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s "
-    values =[member.first_name,member.last_name,member.date_of_birth,member.gender,member.notes.member.contact_info_email,member.contact_info_number,member.id]
+    values =[member.first_name,member.last_name,member.date_of_birth,member.gender,member.notes,member.contact_info_email,member.contact_info_number,member.id]
     run_sql(sql,values)
 
 

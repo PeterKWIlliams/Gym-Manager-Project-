@@ -5,10 +5,10 @@ DROP TABLE IF EXISTS staff;
 
 CREATE TABLE staff(
    
-   id SERIAL NUMBER KEY 
+   id SERIAL PRIMARY KEY,
    first_name VARCHAR(255),
    last_name VARCHAR(255),
-   job_postion VARCHAR(255),
+   job_title VARCHAR(255)
    
 );
 
@@ -19,7 +19,7 @@ CREATE TABLE members(
     last_name VARCHAR(255),
     date_of_birth VARCHAR(255),
     gender VARCHAR(255),
-    notes TEXT,
+    notes VARCHAR(255),
     contact_info_email VARCHAR(255),
     contact_info_number VARCHAR(255),
     membership_type VARCHAR(255)
@@ -28,16 +28,16 @@ CREATE TABLE members(
 
 CREATE TABLE gym_classes(
    
-   id SERIAL NUMBER KEY, 
+   id SERIAL PRIMARY KEY, 
    gym_class_name VARCHAR(255),
-   duration VARCHAR(255),
+   duration INT,
    staff_id SERIAL REFERENCES staff(id)
    );
 
 CREATE TABLE bookings(
    
-   id SERIAL NUMBER KEY
-   member_id SERIAL REFERENCES member(id)
+   id SERIAL PRIMARY KEY,
+   member_id SERIAL REFERENCES members(id),
    gym_class_id SERIAL REFERENCES gym_classes(id)
 
 );
