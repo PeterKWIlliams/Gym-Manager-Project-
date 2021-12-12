@@ -21,4 +21,4 @@ def select_all():
     results = run_sql(sql)
     for result in results:
         member = member_repository.select(result["member_id"])
-        class = gym_class_repository
+        gym_class = gym_class_repository.select

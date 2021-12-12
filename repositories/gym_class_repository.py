@@ -24,6 +24,16 @@ def select_all():
         gym_classes.append(gym_class)
     return gym_classes
 
+def select(id):
+    sql = "SELECT * FROM gym_classes WHERE id = %s"
+    values = [id]
+    result = run_sql(sql,values)
+
+    staff = staff_repository.select(result["staff_id"])
+    gym_class = GymClass(result["gym_class_name"],result["duration"],staff,result["id"])
+    return gym_class
+
+
 def delete_all():
     sql = "DELETE FROM gym_classes"
     run_sql(sql)

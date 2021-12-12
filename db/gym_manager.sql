@@ -29,7 +29,7 @@ CREATE TABLE members(
 CREATE TABLE gym_classes(
    
    id SERIAL NUMBER KEY, 
-   class_name VARCHAR(255),
+   gym_class_name VARCHAR(255),
    duration VARCHAR(255),
    staff_id SERIAL REFERENCES staff(id)
    );
