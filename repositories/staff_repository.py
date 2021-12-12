@@ -39,3 +39,4 @@ def delete(id):
 def update(staff):
     sql = "UPDATE staff SET (first_name,last_name,job_title) WHERE id = %s"
     values = [staff.first_name, staff.last_name,staff.job_title,staff.id]
+    run_sql(sql,values)

@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS staff;
 
 CREATE TABLE staff(
+   
    id SERIAL NUMBER KEY 
    first_name VARCHAR(255),
    last_name VARCHAR(255),
@@ -26,19 +27,18 @@ CREATE TABLE members(
 
 
 CREATE TABLE gym_classes(
+   
    id SERIAL NUMBER KEY, 
    class_name VARCHAR(255),
    duration VARCHAR(255),
    staff_id SERIAL REFERENCES staff(id)
-
-
-
-);
+   );
 
 CREATE TABLE bookings(
+   
    id SERIAL NUMBER KEY
    member_id SERIAL REFERENCES member(id)
-   gym_classes_id SERIAL REFERENCES gym_classes(id)
+   gym_class_id SERIAL REFERENCES gym_classes(id)
 
 );
                  
