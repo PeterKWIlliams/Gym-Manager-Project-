@@ -37,6 +37,13 @@ def update_staff(id):
     staff_repository.update(staff)
 
 
+@staff_blueprint.route("/staff")
+def delete_staff(id):
+    staff_repository.delete(id)
+    return redirect("/staff")
+
+
+
 
 
 
