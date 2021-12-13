@@ -14,10 +14,9 @@ import repositories.staff_repository as staff_repository
 
 
 booking_repository.delete_all()
-staff_repository.delete_all()
 gym_class_repository.delete_all()
+staff_repository.delete_all()
 member_repository.delete_all()
-
 
 
 staff1 = Staff("James","Webb","PT")
@@ -31,6 +30,12 @@ gym_class_repository.save(gym_class1)
 
 booking1 = Booking(member1,gym_class1)
 booking_repository.save(booking1)
+
+
+
+
+
+
 
 
 
