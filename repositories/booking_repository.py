@@ -17,7 +17,7 @@ def save(booking):
 
 def select_all():
     bookings = []
-    sql = "SELECT * FROM bitings"
+    sql = "SELECT * FROM bookings"
     results = run_sql(sql)
     for result in results:
         member = member_repository.select(result["member_id"])
@@ -27,7 +27,7 @@ def select_all():
         return booking 
 
 def select(id):
-    sql = "SELECT FROM biting WHERE id = %s"
+    sql = "SELECT FROM bookings WHERE id = %s"
     values = [id]
     result = run_sql(sql,values)
     member = member_repository.select(result["member_id"])

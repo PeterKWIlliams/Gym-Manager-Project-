@@ -19,6 +19,7 @@ def select_all():
     return all_staff
 
 def select(id):
+    
     sql = "SELECT * FROM staff where id = %s"
     values = [id]
     result = run_sql(sql,values)[0]
