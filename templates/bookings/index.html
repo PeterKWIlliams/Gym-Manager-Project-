@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for booking in bookings %}
+
+<p>{{booking.member.id}}, {{booking.gym_class.id}}, {{booking.id}}</p>
+
+{% endfor %}
+
+
+{% endblock %}

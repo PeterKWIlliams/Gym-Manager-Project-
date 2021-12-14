@@ -10,12 +10,13 @@ def staff():
     staff = staff_repository.select_all()
     return render_template("staff/index.html",staff = staff)
 
-@staff_blueprint.route("/staff")
+@staff_blueprint.route("/staff/new")
 def new_staff():
     return render_template("staff/new.html")
 
-@staff_blueprint.route("/staff")
+@staff_blueprint.route("/staff", methods=["POST"])
 def create_staff():
+    print(request.data)
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
     job_title = request.form["job_title"]
@@ -23,7 +24,7 @@ def create_staff():
     staff_repository.save(new_staff)
     return redirect("/staff")
 
-@staff_blueprint.route("/staff")
+@staff_blueprint.route("/staff/<id>/edit")
 def edit_staff(id):
     staff = staff_repository.select(id)
     return render_template("staff/edit.html",staff = staff)

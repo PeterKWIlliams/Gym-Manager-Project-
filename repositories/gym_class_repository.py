@@ -11,7 +11,7 @@ def save(gym_class):
     sql = "INSERT INTO gym_classes (gym_class_name,duration,staff_id) VALUES (%s, %s,%s) RETURNING id"
     values = [gym_class.gym_class_name,gym_class.duration,gym_class.staff.id]
     results = run_sql(sql,values)
-    id = results[0]['id']
+    id = results[0]["id"]
     gym_class.id = id 
 
 def select_all():
@@ -27,7 +27,7 @@ def select_all():
 def select(id):
     sql = "SELECT * FROM gym_classes WHERE id = %s"
     values = [id]
-    result = run_sql(sql,values)
+    result = run_sql(sql, values)[0]
 
     staff = staff_repository.select(result["staff_id"])
     gym_class = GymClass(result["gym_class_name"],result["duration"],staff,result["id"])

@@ -12,9 +12,3 @@ class Member:
 
 
 
-def get_dob():
-    pass
-def get_age():
-    pass
-def set_age():
-    pass 

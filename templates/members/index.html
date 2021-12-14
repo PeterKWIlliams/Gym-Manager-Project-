@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for member in members %}
+
+<p>{{member.first_name}} {{member.last_name}}</p>
+   {{member.id}}
+<a href= "/members/{{ member.id }}/edit">Update</a>
+
+
+{% endfor %}
+
+<a href ="/members/new">New member</a>
+
+{% endblock %}
+
+

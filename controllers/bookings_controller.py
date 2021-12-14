@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, redirect, render_template, request
 from models.booking import Booking
 
-import repositories.booking_repository as booking_repostiory
+import repositories.booking_repository as booking_repository
 import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
 
@@ -9,8 +9,8 @@ bookings_blueprint = Blueprint("bookings",__name__)
 
 @bookings_blueprint.route("/bookings")
 def bookings():
-    bookings = booking_repostiory.select_all()
-    return render_template('bookings/index.html',bookings = bookings)
+    bookings = booking_repository.select_all()
+    return render_template('bookings/index.html', bookings = bookings)
 
 
 @bookings_blueprint.route("/bookings/new")
@@ -27,7 +27,7 @@ def create_booking():
     gym_class = gym_class_repository.select(gym_class_id)
 
     new_booking = Booking(member,gym_class)
-    booking_repostiory.save(new_booking)
+    booking_repository.save(new_booking)
     return redirect("/bookings")
 
 @bookings_blueprint.route("/bookings/<id>",methods = ["POST"])
@@ -37,12 +37,12 @@ def update_booking(id):
     member = member_repository.select(member_id)
     gym_class = gym_class_repository.select(gym_class_id)
     booking = Booking(member,gym_class)
-    booking_repostiory.update(booking)
+    booking_repository.update(booking)
     return redirect ("/bookings")
 
 @bookings_blueprint.route("/bookings/<id>/delete",methods =["POST"])
 def delete_booking(id):
-    booking_repostiory.delete(id)
+    booking_repository.delete(id)
     return redirect("/bookings")
 
     

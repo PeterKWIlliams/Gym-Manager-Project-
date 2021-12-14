@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for member in staff %}
+
+<p>{{member.first_name}} {{member.last_name}}</p>
+   {{member.id}}
+
+
+
+{% endfor %}
+
+
+
+{% endblock %}

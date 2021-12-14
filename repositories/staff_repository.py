@@ -12,18 +12,17 @@ def save(staff):
 def select_all():
     all_staff = []
     sql = "SELECT * FROM staff"
-    results =run_sql(sql)
+    results = run_sql(sql)
     for result in results:
         staff = Staff(result["first_name"],result["last_name"],result["job_title"],result["id"])
         all_staff.append(staff)
     return all_staff
 
 def select(id):
-    
     sql = "SELECT * FROM staff where id = %s"
     values = [id]
     result = run_sql(sql,values)[0]
-    staff = Staff(result["name"],result["last_name"],result["job_title"],result["id"])
+    staff = Staff(result["first_name"],result["last_name"],result["job_title"],result["id"])
     return staff 
 
 def delete_all():

@@ -9,7 +9,7 @@ import repositories.gym_class_repository as gym_class_repository
 
 
 def save(booking):
-    sql = "INSERT INTO bookings (member_id,gym_class_id) VALUES (%s,%s) RETURNING id "
+    sql = "INSERT INTO bookings (member_id, gym_class_id) VALUES (%s,%s) RETURNING id "
     values = [booking.member.id,booking.gym_class.id]
     results = run_sql(sql,values)
     id = results[0]['id']
@@ -22,9 +22,9 @@ def select_all():
     for result in results:
         member = member_repository.select(result["member_id"])
         gym_class = gym_class_repository.select(result["gym_class_id"])
-        booking = Booking(member,gym_class,result["id"])
+        booking = Booking(member, gym_class, result["id"])
         bookings.append(booking)
-        return booking 
+        return bookings
 
 def select(id):
     sql = "SELECT FROM bookings WHERE id = %s"

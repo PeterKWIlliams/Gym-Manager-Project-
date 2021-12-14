@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+
+
+
+
+<form action = "/members/{{member.id}}" method="POST">
+        <div>
+            <label for = "first_name">First Name</label>
+            <input type ="text" id="first_name" name="first_name" value ={{member.first_name}}>
+            <label for ="last_name">Last Name</label>
+            <input type ="text" id="last_name" name="last_name" value={{member.last_name}}>
+            <label for ="date_of_birth">Date of Birth</label>
+            <input type = "date" id = "date_of_birth" name="date_of_birth" value = {{member.date_of_birth}}>
+            <label for ="gender">Gender</label>
+            <input type="text" id ="gender" name="gender" value = {{member.gender}}>
+            <label for ="notes">notes</label>
+            <textarea name="notes">{{member.notes}}</textarea> 
+            <label for="contact_info_email">Email</label>
+            <input type="text" id="contact_info_email" name="contact_info_email" value = {{member.contact_info_email}}>
+            <label for ="contact_info_number">contact_info_number</label>
+            <input type = "text" id = "contact_info_number" name="contact_info_number" value = {{member.contact_info_number}}>
+            <input type="hidden" name="membership_type">
+            <input type="submit">
+        </div>
+</form>
+ 
+{% endblock %}
+
