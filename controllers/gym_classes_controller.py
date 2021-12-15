@@ -9,7 +9,7 @@ gym_classes_blueprint =Blueprint("gym_classes",__name__)
 
 @gym_classes_blueprint.route("/gym_classes")
 def gym_classes():
-    gym_classes = gym_class_repository.select_all
+    gym_classes = gym_class_repository.select_all()
     
     return render_template("gym_classes/index.html", gym_classes=gym_classes)
 
@@ -17,12 +17,13 @@ def gym_classes():
 def show_gym_class(id):
     members = gym_class_repository.select_members_in_class(id)
     gym_class = gym_class_repository.select(id)
+    
     return render_template("gym_classes/show.html", members = members, gym_class=gym_class)
 
 @gym_classes_blueprint.route("/gym_classes/new")
 def new_gym_class():
     staff = staff_repository.select_all()
-    return render_template("gym_classes/new.html",staff = staff)
+    return render_template("gym_classes/new.html", staff = staff)
 
 @gym_classes_blueprint.route("/gym_classes", methods=["POST"])
 def create_gym_class():

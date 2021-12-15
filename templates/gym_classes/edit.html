@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+{% for gym_class in gym_classes %}
+
+<p>{{gym_class.gym_class_name}} {{gym_class.duration}} {{gym_class.staff.first_name}}{{gym_class.staff.last_name}}</p>
+
+
+{{gym_class.id}} hello
+{% endfor %} 
+
+<a href ="/gym_classes/new">New Session</a>
+
+
+  {% endblock %}

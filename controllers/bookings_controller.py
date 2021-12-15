@@ -1,4 +1,5 @@
 from flask import Blueprint, Flask, redirect, render_template, request
+
 from models.booking import Booking
 
 import repositories.booking_repository as booking_repository
@@ -14,29 +15,42 @@ def bookings():
 
 
 @bookings_blueprint.route("/bookings/new")
-def new_booking(id):
+def new_booking():
     members =  member_repository.select_all()
     gym_classes = gym_class_repository.select_all()
-    return render_template("bookings/new.html",members = members,gym_classes = gym_classes)
+    return render_template("bookings/new.html", members = members, gym_classes = gym_classes)
 
 @bookings_blueprint.route("/bookings", methods =["POST"])
 def create_booking():
+    
     member_id = request.form["member_id"]
     gym_class_id = request.form["gym_class_id"]
     member = member_repository.select(member_id)
     gym_class = gym_class_repository.select(gym_class_id)
-
+    
     new_booking = Booking(member,gym_class)
     booking_repository.save(new_booking)
     return redirect("/bookings")
 
-@bookings_blueprint.route("/bookings/<id>",methods = ["POST"])
+
+@bookings_blueprint.route("/bookings/<id>/edit", methods = ["POST"])
+def edit_booking(id):
+    
+    booking =  booking_repository.select(id)
+    members = member_repository.select_all()
+    gym_classes = gym_class_repository.select_all()
+    return render_template("bookings/edit.html",booking=booking, members=members, gym_classes = gym_classes)
+
+
+
+
+@bookings_blueprint.route("/bookings/<id>" ,methods = ["POST"])
 def update_booking(id):
     member_id = request.form["member_id"]
     gym_class_id = request.form["gym_class_id"]
     member = member_repository.select(member_id)
     gym_class = gym_class_repository.select(gym_class_id)
-    booking = Booking(member,gym_class,id)
+    booking = Booking(member,gym_class, id)
     booking_repository.update(booking)
     return redirect ("/bookings")
 
