@@ -15,14 +15,14 @@ def gym_classes():
 def show_gym_class(id):
     members = gym_class_repository.select_members_in_class(id)
     gym_class = gym_class_repository.select(id)
-    return render_template("gym_classes/show.html",members = members, gym_class = gym_class)
+    return render_template("gym_classes/show.html",members=members, gym_class=gym_class)
 
 @gym_classes_blueprint.route("/gym_classes/new")
 def new_gym_class():
     staff = staff_repository.select_all()
     return render_template("gym_classes/new.html",staff = staff)
 
-@gym_classes_blueprint.route("/gym_classes",methods = ["POST"])
+@gym_classes_blueprint.route("/gym_classes", methods=["POST"])
 def create_gym_class():
     gym_class_name = request.form["gym_class_name"]
     duration = request.form["duration"]
@@ -37,7 +37,7 @@ def edit_gym_class(id):
     gym_class = gym_class_repository.select(id)
     Staff = staff_repository.select_all()
     
-    return render_template("gym_classes/edit.html",gym_class = gym_class,staff = Staff)
+    return render_template("gym_classes/edit.html", gym_class = gym_class, staff = Staff)
 
 @gym_classes_blueprint.route("/gym_classes")
 def update_gym_class(id):

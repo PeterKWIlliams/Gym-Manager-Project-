@@ -4,7 +4,7 @@
 
 {% for booking in bookings %}
 
-<p>{{booking.member.id}}, {{booking.gym_class.id}}, {{booking.id}}</p>
+<p>{{booking.member.first_name}},{{booking.member.last_name}},{{booking.gym_class.duration}} {{booking.gym_class.gym_class_name}}, {{booking.id}}</p>
 
 {% endfor %}
 
