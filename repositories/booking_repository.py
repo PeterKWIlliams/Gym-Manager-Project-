@@ -27,12 +27,13 @@ def select_all():
         return bookings
 
 def select(id):
-    sql = "SELECT FROM bookings WHERE id = %s"
+    sql = "SELECT * FROM bookings WHERE id = %s"
     values = [id]
-    result = run_sql(sql,values)
+    result = run_sql(sql,values)[0]
+    
     member = member_repository.select(result["member_id"])
     gym_class = gym_class_repository.select(result["gym_class_id"])
-    booking = Booking(member,gym_class,result["id"])
+    booking = Booking(member, gym_class, result["id"])
     return booking 
 
 def delete_all():

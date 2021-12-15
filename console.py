@@ -30,16 +30,3 @@ gym_class_repository.save(gym_class1)
 
 booking1 = Booking(member1,gym_class1)
 booking_repository.save(booking1)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -33,13 +33,13 @@ def create_booking():
     return redirect("/bookings")
 
 
-@bookings_blueprint.route("/bookings/<id>/edit", methods = ["POST"])
+@bookings_blueprint.route("/bookings/<id>/edit")
 def edit_booking(id):
     
     booking =  booking_repository.select(id)
     members = member_repository.select_all()
     gym_classes = gym_class_repository.select_all()
-    return render_template("bookings/edit.html",booking=booking, members=members, gym_classes = gym_classes)
+    return render_template("bookings/edit.html", booking=booking, members=members, gym_classes=gym_classes)
 
 
 

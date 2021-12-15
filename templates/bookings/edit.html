@@ -4,10 +4,31 @@
 
 
 
+<form action="/bookings/{{ booking.id }}" method="POST">
+    <div>
+        <label for="members">Members:</label>
+        <select name ="member_id" id ="member">
+        {% for member in members %}
+        <option value="{{member.id}}" {% if member.id ==booking.member.id %}selected {% endif%}>
+        {{member.first_name + " " + member.last_name}}
+        </option>
+        {% endfor %}
+    </select>
+        <div>
+            
+            <div>
+            <label for="gym_class">Sessions:</label>
+            <select name ="gym_class_id" id ="gym_class">
+            {% for  gym_class in gym_classes %}
+            <option value="{{gym_class.id}}" {% if gym_class.id ==booking.gym_class.id %}selected {% endif%}>
+            {{gym_class.gym_class_name}}
+            </option>
+            {% endfor %}
+            </select>
+            <input type="submit">
+            <a href ="/bookings/new">New booking</a>
 
-hello
-
-
+        
 
 
 

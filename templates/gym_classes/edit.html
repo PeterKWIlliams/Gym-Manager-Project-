@@ -4,16 +4,25 @@
 
 
 
-
-{% for gym_class in gym_classes %}
-
-<p>{{gym_class.gym_class_name}} {{gym_class.duration}} {{gym_class.staff.first_name}}{{gym_class.staff.last_name}}</p>
-
-
-{{gym_class.id}} hello
-{% endfor %} 
-
-<a href ="/gym_classes/new">New Session</a>
+<form action="/gym_classes/{{gym_class.id}}" method="POST">
+    <div>
+        <label for="gym_class_name">Session</label>
+        <input type="text" name="gym_class_name" >
+        <label for="duration">duration</label>
+        <input type="number" name="duration" >
+        <label for="staff">Employees</label>
+        <select name = "staff_id" id = "staff">
+            {% for employee in staff %}
+            
+            
+            <option value = "{{employee.id}}">
+                {{employee.first_name +" " +employee.last_name}}
+            </option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </div>
+</form>
 
 
   {% endblock %}

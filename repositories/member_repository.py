@@ -24,9 +24,13 @@ def select_all():
 
 def select(id):
     sql = "SELECT * FROM members WHERE id = %s"
+    
     values =[id]
+    
     result = run_sql(sql,values)[0]
-    member = Member(result["first_name"],result["last_name"],result["date_of_birth"],result["gender"],result["notes"],result["contact_info_email"],result["contact_info_number"],result["membership_type"],result["id"])
+    
+    member = Member(result["first_name"], result["last_name"], result["date_of_birth"], result["gender"], result["notes"], result["contact_info_email"], result["contact_info_number"], result["membership_type"], result["id"])
+    
     return member
 
 

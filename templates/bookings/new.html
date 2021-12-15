@@ -2,11 +2,51 @@
 {% block content %}
 
 
+<form action="/bookings" method="POST">
+    <div>
+        <label for="members">Members:</label>
+        <select name ="member_id" id ="member">
+        {% for member in members %}
+        <option value="{{member.id}}" >
+        {{member.first_name + " " + member.last_name}}
+        </option>
+        {% endfor %}
+    </select>
+        <div>
+            
+            <div>
+            <label for="gym_class">Sessions:</label>
+            <select name ="gym_class_id" id ="gym_class">
+            {% for  gym_class in gym_classes %}
+            <option value="{{gym_class.id}}">
+            {{gym_class.gym_class_name}}
+            </option>
+            {% endfor %}
+            </select>
+           <input type="submit">
 
+        
 
-
-hello
-
+          
+        <!-- </div>
+        <input type="submit"  >
+        <label for="last_name">Last name</label>
+        <input type="text" name="last_name" >
+        <label for="date_of_birth">date_of_birth</label>
+        <input type="date" name="date_of_birth" >
+        <label for="gender">gender</label>
+        <input type="text" name="gender" >
+        <label for="notes">notes</label>
+        <input type="text" name="notes" >
+        <label for="contact_info_email">Email</label>
+        <input type="email" name="contact_info_email" >
+        <label for="contact_info_number">Number</label>
+        <input type="text" name="contact_info_number" >
+        <label for="membership_type">membership_type</label>
+        <input type="text" name="membership_type" >
+        <input type="submit">
+    </div> -->
+</form>
 
 
 

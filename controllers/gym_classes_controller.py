@@ -23,7 +23,7 @@ def show_gym_class(id):
 @gym_classes_blueprint.route("/gym_classes/new")
 def new_gym_class():
     staff = staff_repository.select_all()
-    return render_template("gym_classes/new.html", staff = staff)
+    return render_template("gym_classes/new.html", staff=staff)
 
 @gym_classes_blueprint.route("/gym_classes", methods=["POST"])
 def create_gym_class():

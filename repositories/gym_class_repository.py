@@ -13,7 +13,6 @@ def save(gym_class):
     values = [gym_class.gym_class_name,gym_class.duration, gym_class.staff.id]
     results = run_sql(sql,values)
     id = results[0]["id"]
-    print(id)
     gym_class.id = id 
 
 
