@@ -6,7 +6,11 @@
 
 <p>{{booking.member.first_name}},{{booking.member.last_name}},{{booking.gym_class.duration}} {{booking.gym_class.gym_class_name}}, {{booking.id}}</p>
 
+<a href= "/bookings/{{ booking.id }}/edit">Update</a>
+
+
 {% endfor %}
 
+<a href ="/bookings/new">New booking</a>
 
 {% endblock %}

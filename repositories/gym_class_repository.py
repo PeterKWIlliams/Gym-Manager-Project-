@@ -1,3 +1,4 @@
+from controllers.gym_classes_controller import gym_classes
 from db.run_sql import run_sql 
 from models.member import Member
 from models.staff import Staff
@@ -14,21 +15,23 @@ def save(gym_class):
     id = results[0]["id"]
     gym_class.id = id 
 
+
 def select_all():
     gym_classes = []
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM gym_classes"
     results = run_sql(sql)
     for result in results:
-        staff = staff_repository.select(result["staff_id"])
-        gym_class = GymClass(result["gym_class_name"],result["duration"],staff,result["id"])
+        staff= staff_repository.select(result["staff_id"])
+        gym_class = GymClass(result["name"], staff, result["id"])
         gym_classes.append(gym_class)
     return gym_classes
 
+
 def select(id):
+    
     sql = "SELECT * FROM gym_classes WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)[0]
-
+    result = run_sql(sql,values)[0]
     staff = staff_repository.select(result["staff_id"])
     gym_class = GymClass(result["gym_class_name"],result["duration"],staff,result["id"])
     return gym_class

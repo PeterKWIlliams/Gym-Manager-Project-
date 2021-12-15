@@ -36,7 +36,7 @@ def update_booking(id):
     gym_class_id = request.form["gym_class_id"]
     member = member_repository.select(member_id)
     gym_class = gym_class_repository.select(gym_class_id)
-    booking = Booking(member,gym_class)
+    booking = Booking(member,gym_class,id)
     booking_repository.update(booking)
     return redirect ("/bookings")
 
