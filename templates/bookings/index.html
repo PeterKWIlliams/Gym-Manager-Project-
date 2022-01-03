@@ -2,11 +2,38 @@
 
 {% block content %}
 
+
+<div class= "t-head">
+<table >
+    
+    <tr>
+       <th>Session #</th>
+       <th>Session Name</th>
+       <th>Instructor</th>
+       <th>Member</th>
+       
+       
+       
+     </tr>
+ </table>
+</div>
+
 {% for booking in bookings %}
 
-<p>{{booking.member.first_name}},{{booking.member.last_name}},{{booking.gym_class.duration}} {{booking.gym_class.gym_class_name}}, {{booking.id}}</p>
+<div class= "t-body">
+<table>
+        <td>{{booking.id}}</td>
+        <td>{{booking.gym_class.gym_class_name}}</td>
+        <td>{{booking.gym_class.staff.first_name+" "+booking.gym_class.staff.last_name}}</td>
+        <td>{{booking.member.first_name+" "+booking.member.last_name}}</td>
+        <td class="sm-td"><a href= "/bookings/{{ booking.id }}/edit">&#9998;</a>
+        
+        
+        
+        </td>
+</table>
+</div>
 
-<a href= "/bookings/{{ booking.id }}/edit">Update</a>
 
 
 {% endfor %}

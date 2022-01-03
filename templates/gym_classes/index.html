@@ -2,12 +2,30 @@
 
 {% block content %}
 
-<h2><h2>
-
-
+<div class= "t-head">
+  <table>
+    <tr>
+       <th>Class #</th>
+       <th>session</th>
+       <th>Duration(mins)</th>
+       
+       
+     </tr>
+ </table>
+</div>
 {% for gym_class in gym_classes%}
 <div>
-{{gym_class.gym_class_name}} {{gym_class.duration}}
+  <div class= "t-body">
+  <table>
+    <tr>
+       <td>{{gym_class.id}}</td>
+        <td>{{gym_class.gym_class_name}}</td>
+        <td>{{gym_class.duration}}</td>
+        <td class="sm-td"><a href= "/gym_classes/{{ gym_class.id }}/edit">&#9998;</a></td>
+     </tr>
+ </table>
+ </div>
+ 
 </div>
 
 
@@ -16,7 +34,7 @@
 {% endfor %}
 
 
-<a href= "/gym_classes/{{ gym_class.id }}/edit">Update</a>
+
 
 <a href ="/gym_classes/new">New Session</a>
 

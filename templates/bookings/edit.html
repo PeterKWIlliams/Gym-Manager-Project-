@@ -5,7 +5,7 @@
 
 
 <form action="/bookings/{{ booking.id }}" method="POST">
-    <div>
+    <div class="">
         <label for="members">Members:</label>
         <select name ="member_id" id ="member">
         {% for member in members %}
@@ -27,7 +27,7 @@
             </select>
             <input type="submit">
             <a href ="/bookings/new">New booking</a>
-
+                
         
 
 

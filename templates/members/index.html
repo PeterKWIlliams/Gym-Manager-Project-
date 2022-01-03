@@ -1,17 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class= "t-head">
+<table>
+   <tr>
+      <th>Member #</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>gender</th>
+      <th>email</th>
+      <th>membership type</th>
+      
+    </tr>
+</table>
+</div>
 {% for member in members %}
+<div class= "t-body">
+<table>
+   <tr>
+      <td>{{member.id}}</td>
+      <td>{{member.first_name}}</td>
+      <td>{{member.last_name}}</td>
+      <td>{{member.gender}}</td>
+      <td>{{member.contact_info_email}}</td>
+      <td>{{member.membership_type}}</td>
+      
+      <td class="sm-td"><a href= "/members/{{ member.id }}/edit">&#9998;</a></td>
+      
+   
+   </tr>
+</table>
+</div>
 
-<p>{{member.first_name}} {{member.last_name}}</p>
-   {{member.id}}
-<a href= "/members/{{ member.id }}/edit">Update</a>
+
 
 
 {% endfor %}
 
-<a href ="/members/new">New member</a>
+<a href ="/members/new">New Member</a>
 
 {% endblock %}
 

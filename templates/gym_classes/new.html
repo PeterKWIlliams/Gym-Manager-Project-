@@ -5,18 +5,18 @@
 
 
 <form action="/gym_classes" method="POST">
-    <div>
+    <div >
         <label for="gym_class_name">Session</label>
         <input type="text" name="gym_class_name" >
         <label for="duration">duration</label>
         <input type="number" name="duration" >
         <label for="staff">Employees</label>
         <select name = "staff_id" id = "staff">
-            {% for employee in staff %}
+            {% for staff in staff %}
             
             
-            <option value = "{{employee.id}}">
-                {{employee.first_name +" " +employee.last_name}}
+            <option value = "{{staff.id}}">
+                {{staff.first_name +" " +staff.last_name}}
             </option>
             {% endfor %}
         </select>

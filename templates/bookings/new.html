@@ -3,7 +3,7 @@
 
 
 <form action="/bookings" method="POST">
-    <div>
+        <div class = form_container>
         <label for="members">Members:</label>
         <select name ="member_id" id ="member">
         {% for member in members %}
@@ -11,11 +11,8 @@
         {{member.first_name + " " + member.last_name}}
         </option>
         {% endfor %}
-    </select>
-        <div>
-            
-            <div>
-            <label for="gym_class">Sessions:</label>
+        </select>
+        <label for="gym_class">Sessions:</label>
             <select name ="gym_class_id" id ="gym_class">
             {% for  gym_class in gym_classes %}
             <option value="{{gym_class.id}}">
@@ -24,8 +21,8 @@
             {% endfor %}
             </select>
            <input type="submit">
-
-        
+        </div>
+        </div>
 
           
         <!-- </div>

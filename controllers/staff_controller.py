@@ -27,7 +27,7 @@ def create_staff():
 @staff_blueprint.route("/staff/<id>/edit")
 def edit_staff(id):
     staff = staff_repository.select(id)
-    return render_template("staff/edit.html", staff=staff)
+    return render_template("staff/edit.html", staff= staff)
 
 @staff_blueprint.route("/staff")
 def update_staff(id):
